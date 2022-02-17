@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+        node1_1:
+                image: cassandra:4.0
+                container_name: node1_1
+                ports:
+                        - "9042:9042"
+                volumes:
+                        - ./data/node1_1:/var/lib/cassandra
+                environment: &environment
+                        CASSANDRA_SEEDS: "node1_1, node2_2"
+                        CASSANDRA_CLUSTER_NAME: AirbnbBigDataPlatforms
+        node2_2:
+                image: cassandra:4.0
+                container_name: node2_2
+                ports:    
+                        - "9043:9042"
+                volumes:  
+                        - ./data/node2_2:/var/lib/cassandra
+                environment: *environment
+                depends_on:
+                        - "node1_1"
+        node3_3:          
+                image: cassandra:4.0
+                container_name: node3_3
+                ports:    
+                        - "9044:9042"
+                volumes:  
+                        - ./data/node3_3:/var/lib/cassandra
+                environment: *environment
+                depends_on:
+                        - "node2_2"
+
+
