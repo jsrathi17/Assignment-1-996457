@@ -73,7 +73,7 @@ The performance analysis table is presented as below:
 **Performance Testing**
 
 | Test | File Size | Consistency Level | Ingestion Processes | Ingestion Time |
-| --- | --- |
+| --- | --- | --- | --- | --- |
 | 1| 0.4MB | ALL | 1 | 8 seconds |
 | 2| 0.4MB | ONE | 1 | 4 seconds |
 | 3| 45MB | ALL | 3 |  4.5 minutes | 

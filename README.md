@@ -1,4 +1,4 @@
 # Assignment Assignment_1 996457
 
 
-> Guide line: This is the file where you will explain the structure of your assignment delivery. Remember to replace **Assignment_NR** with the number of the assignment (e.g., 1, 2, 3, or 4) and **Your_STUDENTID** with your student number. Remove all guidelines from the template.
+> The code for implementation is located in code directory. The reports and deployment instructions are located in logs directory and the data is present in data directory. All other files are changed as per assignment instructions.

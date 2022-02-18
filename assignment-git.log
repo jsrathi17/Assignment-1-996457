@@ -1,2 +1,89 @@
-the content of this file should be the output of the log of your own git project for this assignment
-using git log command to export your git log
+commit 56544bca2b5474273c004b5d3f223a7965026fb6
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 13:57:53 2022 +0200
+
+    adding final documentation
+
+commit ac889348574ee9213345018d36d655c6cc2d2817
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 13:56:16 2022 +0200
+
+    adding final documentation
+
+commit b78e856c2968a088e8010d9d8eba6c3f07489ee2
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 13:23:12 2022 +0200
+
+    adding reprot
+
+commit 9413bd64894accace51ccd74eb62ee1c1d5d0b89
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 12:57:50 2022 +0200
+
+    adding report
+
+commit 22fbe8d99ec49306d767a9aff37f7d1522f6dc90
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 04:55:05 2022 +0200
+
+    adding file
+
+commit a69c74ce90502792148a46245d9c1305b8ff9359
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 04:51:37 2022 +0200
+
+    adding file
+
+commit 6fcc9f872b6382c30b60af20eb50b640230aa7d5
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 04:35:12 2022 +0200
+
+    adding file
+
+commit c4c1ed0e21c2346da388c6e8b3899f850ea95ad2
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 04:11:40 2022 +0200
+
+    adding files
+
+commit d0fd1f42c8170bd1c4efdfde783e36523891d897
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 02:44:25 2022 +0200
+
+    finished deployment and implementation
+
+commit 6709a60cbdf7c185f789ba54894f03e3756d6722
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 02:21:07 2022 +0200
+
+    adding scripts for ingest
+
+commit 8c84a2b81fe69afbae2322760ccf4f932592ac01
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 01:49:59 2022 +0200
+
+    adding documentatiom
+
+commit dfca1b1589bc0a6e95a6b4ee515f64137decd905
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 01:49:53 2022 +0200
+
+    adding documentatiom
+
+commit 31a134016e3e0f16775c47d450799c5fe50a56c5
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 01:47:47 2022 +0200
+
+    adding deployment
+
+commit cab1ebb5144963a26824f4952607de4d592d4c1f
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 01:45:07 2022 +0200
+
+    adding codes for mysimbdp
+
+commit 472817f64ba5fa716e224fbd071c6c4115978584
+Author: jsrathi17 <jayshreerathi111@gmail.com>
+Date:   Fri Feb 18 00:34:09 2022 +0200
+
+    frist commit
