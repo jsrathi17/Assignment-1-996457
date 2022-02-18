@@ -9,7 +9,7 @@ from cassandra.cluster import Cluster
 def ingestListings(session):
     print("Starting batch load")
     insert_data = session.prepare('INSERT INTO airbnb.airbnblistings (id, host_id, host_name, neighbourhood, latitude, longitude, room_type, price, minimum_nights, number_of_reviews, calculated_host_listings_count, availability_365) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ')
-    batch = BatchStatement(consistency_level=ConsistencyLevel.ALL)
+    batch = BatchStatement(consistency_level=ConsistencyLevel.QUORUM)
     
     with open('../data/data.csv') as listings:
         reader = csv.reader(listings, delimiter = ',')

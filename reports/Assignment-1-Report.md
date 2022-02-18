@@ -67,13 +67,30 @@ There are various different consistency options in Cassandra. THe consistency le
 
 ### Given your deployment environment, show the performance (response time and failure) of the tests for 1,5, 10, .., n of concurrent mysimbdp-dataingest writing data into mysimbdp-coredms with different speeds/velocities together with the change of the number of nodes of mysimbdp-coredms. Indicate any performance differences due to the choice of consistency options
 
+- For performance testing, 70MB of data was ingested with different consistency options- ONE, ALL and QUORUM. Different subprocesses are run parallely to to test the Ingestion speed and runtime. 
+The performance analysis table is presented as below: 
+
+**Performance Testing**
+
+| Test | File Size | Consistency Level | Ingestion Processes | Ingestion Time 
+| --- | --- |
+| 1| 0.4MB | ALL | 1 | 8 seconds 
+| 2| 0.4MB | ONE | 1 | 4 seconds 
+| 3| 45MB | ALL | 3 |  4.5 minutes 
+| 4| 45MB | QUORUM | 1 | 4 minutes 
+| 5| 70MB | ALL | 3 |  10 minutes 
+| 6| 70MB | ALL | 1 | 8.9 minutes  
+| 7|70MB | QUORUM | 1 | 8 minutes 
+| 7| 70MB | QUORUM | 3 | 8.5 minutes 
 
 
+As the ingestion process increases, the time increases linearly. With 5 ingestion process running parallely for 70MB of data, I encountered an error of Cassandra unavailability. Using ALL consistency level, provides slower ingestion time and QUORUM seems to be the most optimal option for consistency level for this scenario. 
 
+Another testing was performed with 45MB size with stopping a node to see the performance change. The ingestion failed for multiple processes and ALL consistency when a node was down. Also the ingestion time increased singnificantly. The ALL ingestion failed as for ALL, both replicas must succeed. And when one node is down, the ingestion fails when multiple write/ingestion operations are performed parallely as the required number of nodes aren't active.
 
 ### Observing the performance and failure problems when you push a lot of data into mysimbdp-coredms, propose the change of your deployment to avoid such problems.
 
-
+Several errors where faced when implemented mysimbdp-coredms. Since, I am implementing batch ingestion it is important to clear the batch after the operation is complete. Else, the cassandra gives an error of Batch size too large. The ingestion speed is relatively very small compared to industry standards. One reason for this could be that I am using cassandra in my local machine with very limited hardware resources. More RAM, a stronger CPU and GPU needs to be allocated as the physical platforms that are required to handle big data needs to be strong and robust. 
 
 
 # Part 3 - Extension
@@ -103,9 +120,11 @@ The mysimbdp-dataingest now performs batch operation through locally available c
 
 ### Assume that you design APIs for mysimbdp-daas so that any other developer who wants to implement mysimbdpdataingest can write his/her own ingestion program to write the data into mysimbdp-coredms by calling mysimbdp-daas. Explain how would you control the data volume and speed in writing and reading operations for a tenant?
 
-Volume and read/write speed can be controlled by implementing a queue so that the read/write operation doesn't overwhelm the nodes. 
+Volume and read/write speed can be controlled by implementing a queue so that the read/write operation doesn't overwhelm the nodes. Another option would be implement backpressure control and implement batch sizes. 
 
 
 ## Appendix
 
 ![Docker](docker.png)
+![CQLSH](cqlsh.png)
+![Performance](performance.png)
