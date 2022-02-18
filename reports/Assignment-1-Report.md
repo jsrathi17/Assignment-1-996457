@@ -9,7 +9,7 @@ The coredms is implemented with Apache Cassandra database. Apache cassandra is a
 
 ### 2. Design and explain interactions between main components in your architecture of mysimbdp
 
-
+![Schema](schemas.png)
 
 ### 3. Explain a configuration of a cluster of nodes for mysimbdp-coredms so that you prevent a single-point-of-failure problem for mysimbdp-coredms for your tenants
 
@@ -30,6 +30,21 @@ Another approach to scale would be to allow multiple tenants where each tenant g
 
 A single table for all airbnb listings is implemented in the Cassandra keyspace. The table schema is defined as follows:
 
+**Airbnblistings**
+| Field Name | Data Type |
+| --- | --- |
+| id | int |
+| host_id | int |
+| host_name | text |
+| neighbourhood | text |
+| latitude | float |
+| longitude | float |
+| room_type | text |
+| price | int |
+| minimum_nights | int |
+| number_of_reviews | int |
+| calculated_host_listings_count | int |
+| availability_365 | int |
 
 The data from the file is first cleaned, some columns are dropped. Neighborhood group column only had NULL data present. Whereas there were multiple redundant columns for reviews like reviews_per_month, number_of_reviews_ltm, last_review which do not add much meaning to the data. Hence, they are removed from the dataset. Since the implementation is for big data it only makes sense to design with limited columns. 
 
