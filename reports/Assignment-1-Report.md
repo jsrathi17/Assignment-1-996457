@@ -72,16 +72,16 @@ The performance analysis table is presented as below:
 
 **Performance Testing**
 
-| Test | File Size | Consistency Level | Ingestion Processes | Ingestion Time 
+| Test | File Size | Consistency Level | Ingestion Processes | Ingestion Time |
 | --- | --- |
-| 1| 0.4MB | ALL | 1 | 8 seconds 
-| 2| 0.4MB | ONE | 1 | 4 seconds 
-| 3| 45MB | ALL | 3 |  4.5 minutes 
-| 4| 45MB | QUORUM | 1 | 4 minutes 
-| 5| 70MB | ALL | 3 |  10 minutes 
-| 6| 70MB | ALL | 1 | 8.9 minutes  
-| 7|70MB | QUORUM | 1 | 8 minutes 
-| 7| 70MB | QUORUM | 3 | 8.5 minutes 
+| 1| 0.4MB | ALL | 1 | 8 seconds |
+| 2| 0.4MB | ONE | 1 | 4 seconds |
+| 3| 45MB | ALL | 3 |  4.5 minutes | 
+| 4| 45MB | QUORUM | 1 | 4 minutes |
+| 5| 70MB | ALL | 3 |  10 minutes |
+| 6| 70MB | ALL | 1 | 8.9 minutes |
+| 7|70MB | QUORUM | 1 | 8 minutes |
+| 7| 70MB | QUORUM | 3 | 8.5 minutes | 
 
 
 As the ingestion process increases, the time increases linearly. With 5 ingestion process running parallely for 70MB of data, I encountered an error of Cassandra unavailability. Using ALL consistency level, provides slower ingestion time and QUORUM seems to be the most optimal option for consistency level for this scenario. 
