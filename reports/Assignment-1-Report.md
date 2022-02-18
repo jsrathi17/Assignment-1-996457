@@ -11,6 +11,8 @@ The coredms is implemented with Apache Cassandra database. Apache cassandra is a
 
 ![Schema](schemas.png)
 
+mysimbdp-coredms is the cassandra cluster with 3 nodes. The data.csv file is the file user wishes to ingest, mysimpdb-ingest is the ingestion module to ingest the data to mysimbdp. The mysimbdp-api-daas module is an API, the provides basic functionality of read and write to the coredms. 
+
 ### 3. Explain a configuration of a cluster of nodes for mysimbdp-coredms so that you prevent a single-point-of-failure problem for mysimbdp-coredms for your tenants
 
 For this assignment, I have configured a cluster named AirbnbBigDataPlatforms with 3 nodes. Since Cassandra is a peer-to-peer network with no master node, every node has same role in Cassandra. Since, cassandra replicates the data based on replication factor in the nodes, if one node goes down, the other nodes makes sure of the data availability preventing the single point of failure. 
