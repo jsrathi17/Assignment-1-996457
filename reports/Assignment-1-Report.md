@@ -23,7 +23,7 @@ For this platform, I have kept the replication factor to 2. Which means that the
 ### 5. Explain how would you scale mysimbdp to allow many tenants using mysimbdp-dataingest to push data into mysimbdp
 
 One approach to scale for multi-tenant architecture is that each tenant may have different schemas. This hampers with performance and scalability as we store multiple keyspaces in memory. 
-Another approach to scale would be to allow multiple tenants where each tenant get their own cluster. This increases the cost significantly, whereas the performance and scalability is traded off. 
+Another approach to scale would be to allow multiple tenants where each tenant get their own cluster or a mysimbdp-coredms. This increases the cost significantly, whereas the performance and scalability is traded off. 
 
 
 # Part -2 Implementation
@@ -72,3 +72,29 @@ There are various different consistency options in Cassandra. THe consistency le
 
 
 ### Observing the performance and failure problems when you push a lot of data into mysimbdp-coredms, propose the change of your deployment to avoid such problems.
+
+
+
+
+# Part 3 - Extension
+
+### Using your mysimdbp-coredms, a single tenant can create many different databases/datasets. Assume that you want to support the tenant to manage metadata about the databases/datasets, what would be your solution? 
+
+- A possible solution is to centralize the information of cassandra metadata. Tool like Zookeeper which is a centralized service mainly used for maintaining configuration information can be implemented along with Apache Cassandra. Zookeeper allows the group of nodes to coordinate between themselves and maintain shared data with robust synchronization. 
+
+- Another program level solution would be to implement the script in such a way that tenant can input the columns and keyspace name s/he wants to add. The script can be changed based on the tenant's inputs.
+
+### Assume that each of your tenants/users will need a dedicated mysimbdp-coredms. Design the data schema of service information for mysimbdp-coredms that can be published into an existing registry so that you can find information about which mysimbdp-coredms is for which tenants/users 
+
+- Service registry is a database that contains network locations of service instances. In our mysimbdp-coredms this is implemented using a service registry tool called Zookeeper. Zookeeper has a concept of ephemeral nodes which can be used to implement service registry. A new ephemeral node is added everytime, a service is instantiated. If the service goes down, the ephemeral node is automatically removed. Apache curator is used for service discovery mechanism on top of zookeeper. A service needs to self register at start-up using curator. 
+
+
+![Schema](3.2.png)
+
+
+### Explain how you would change the implementation of mysimbdp-dataingest (in Part 2) to integrate a service discovery feature
+
+- To integrate a service discovery feature in dataingest an initial service discovery step must be added before connecting to coredms. It can be done by running a zookeeper in a docker container and the python library for Zookeeper called kazoo. After the zookeeper is started, we get the client port details. This is used to connect to zookeeper. After connecting to zookeeper, we intialize the curator framework and start it. And initialize the hashmap to store URI name to zNode mapping. The register and discover method can be later used, for service registry and discovery. 
+
+
+###  Assume that now only mysimbdp-daas can read and write data into mysimbdp-coredms, how would you change your mysimbdp-dataingest to work with mysimbdp-daas? 
