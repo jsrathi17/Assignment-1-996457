@@ -18,6 +18,8 @@ To see the running containers, you can do:
 It is better to note down the ip address of your containers for further process using following command:
 	docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' node1_1
 
+Install the require dependencies using the command:
+	pip install -r requirements.txt
 
 # mysimpdb-coredms
 
