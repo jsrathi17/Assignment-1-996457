@@ -32,7 +32,7 @@ session.execute("""
                 number_of_reviews int,
                 calculated_host_listings_count int, 
                 availability_365 int,
-                PRIMARY KEY (host_id, id)
+                PRIMARY KEY (id, host_id)
             )
             """)
 
