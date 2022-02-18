@@ -98,3 +98,14 @@ There are various different consistency options in Cassandra. THe consistency le
 
 
 ###  Assume that now only mysimbdp-daas can read and write data into mysimbdp-coredms, how would you change your mysimbdp-dataingest to work with mysimbdp-daas? 
+
+The mysimbdp-dataingest now performs batch operation through locally available csv files. This can be extended to work with mysimbdp-daas which can be accessible through public API. The code to read, write in the database is implemented in dataingest file. A modular approach is to be implemented for the code. The mysimbdp-daas is now separately connecting to cassandra client. This can be changed as for every incoming HTTP request, an event is triggered that calls the functions from mysimbdp-coredms. 
+
+### Assume that you design APIs for mysimbdp-daas so that any other developer who wants to implement mysimbdpdataingest can write his/her own ingestion program to write the data into mysimbdp-coredms by calling mysimbdp-daas. Explain how would you control the data volume and speed in writing and reading operations for a tenant?
+
+Volume and read/write speed can be controlled by implementing a queue so that the read/write operation doesn't overwhelm the nodes. 
+
+
+## Appendix
+
+![Docker](docker.png)
