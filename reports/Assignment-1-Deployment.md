@@ -37,3 +37,11 @@ Now to ingest the data to mysimbdp. Run the following command.
 
 	python3 mysimbdp-ingest.py
 
+# mysimbdp-api-daas
+
+A simple API to get and add listings data is implemented using Python Flask. To run the flask application:
+
+	python3 mysimbdp-api-daas.py
+
+The flask server runs at localhost:5005/
+To get the listings data: localhost:5005/listings
